@@ -1,0 +1,3 @@
+TODO git/gh - add description, tags - content type: bash/shell/dotfiles
+TODO put in subdir? - for ease of web use?
+TODO scripts or research on what's possible/easy/likely to leak in dotfiles. Good secrets practices, ~/.ssh ...
