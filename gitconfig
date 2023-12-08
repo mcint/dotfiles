@@ -1,0 +1,39 @@
+[credential "https://github.com"]
+	helper = 
+	helper = !/home/xenon/.nix-profile/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/home/xenon/.nix-profile/bin/gh auth git-credential
+[alias]
+	cg = config --global
+	rv = remote --verbose
+	s = status -sb -uno
+	su = status -sb -uall
+	lgs = log --stat --graph
+	br = branch
+	f = fetch
+	ff = merge --ff
+	d = diff
+	dc = diff --cached
+	sa = status -sb
+	xm = commit -m
+	au = add --update
+	co = checkout
+	bra = branch --all
+	aliases = !git cg -l | grep alias | cut -d. -f2- | sed \"s/=/\t/1\" | sort -k2
+	cl = config --local
+	cs = config --system
+	cw = config --worktree
+	lgos = log --graph --oneline --stat
+	lgo = log --graph --oneline
+	aliases2 = !git cg -l | grep alias | cut -d. -f2- | sed \"s/=/\t/1\" | sort -k2
+	alias2 = !git cg -l | grep alias | cut -d. -f2- | sed \"s/=/\t/1\" | sort -k2
+	alias = !git cg -l | grep alias | cut -d. -f2- | sed \"s/=/\t/1\" | sort -k1
+	lg = log --oneline
+	x = commit
+	cia = commit --amend
+[user]
+	name = Loren McIntyre
+	email = hack@mcint.io
+[init]
+	defaultBranch = main
