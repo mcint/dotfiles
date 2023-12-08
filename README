@@ -1,0 +1,10 @@
+
+
+dotfiles - I'm finally putting them online.
+
+I'd like to implement one of those dotfiles downloaders, for use on temporary computers. `$ dotfiles mcint .vimrc` or something, on a new, temporary host.
+
+At present, dotfiles are saved in `~/.config/shell/` and symlinked from ~. I should write a script, or use gnu stow or similar, to check and implement symlinks for setting up a new host.
+
+
+New directions: nix-ification. Modifications to system-wide files, /etc/inputrc, or similar. Maybe some scripting of preferences for these modificaitons.
