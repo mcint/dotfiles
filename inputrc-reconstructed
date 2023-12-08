@@ -1,0 +1,16 @@
+
+
+set completion-ignore-case on
+set completion-map-case on
+
+## bracketed paste handling - https://stackoverflow.com/a/72071483/1020467 - 2023-08-06
+#set enable-bracketed-paste off
+
+# TODO capslock-ctrl remap in console only?
+
+# TODO list applications & libraries that use/read this file & /etc/inputrc + ?
+# - gnureadline
+#   - bash
+#   - rlwrap?
+#   - vim?/nvim? readline features?
+#   - python readline import (& perl & ...)

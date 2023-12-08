@@ -1,0 +1,56 @@
+
+# utility functions
+# [[ $PATH =~ :$ARG: ]] - contains
+_err(){  [[ $DEBUG -gt 1 ]] && 2> echo "error $*"; }
+_path_prepend(){
+  if [[ ! -d "$1" ]]; then _err "'$1' no dir"; return 1; fi
+  if [[ :$PATH: =~ :$1: ]]; then _err "'$1' already on path"; return 1; fi
+  export PATH="$1:$PATH";
+}
+_path_append(){ 
+  if [[ ! -d "$1" ]]; then _err "'$1' no dir"; return 1; fi
+  if [[ :$PATH: =~ :$1: ]]; then _err "'$1' already on path"; return 1; fi
+  export PATH="$PATH:$1";
+}
+#_path_append(){ [[ -d "$1"  && ! $PATH =~ :$1: ]] && export PATH="$PATH:$1"; }
+_path_insert(){
+  echo wip: not implemented; return
+  arg="$1"; index="$2";
+  IFS=: eval 'local arr=($PATH)';
+  arr[]
+  #if [[ -d "$arg" ]]; then 
+  #export PATH="$PATH:$";
+}
+_path_remove(){
+  for ARG in "$@"; do
+    while [[ :$PATH: =~ :$ARG: ]]; do PATH=${PATH//:$ARG:/:}; done
+  done
+  PATH=${PATH#$ARG:}
+  PATH=${PATH%:$ARG}
+  export PATH
+}
+# manpath
+_manpath_prepend(){ 
+  # MANPATH="...:...::" # supports local dir '::', but awk to update
+  if [[ ! -d "$1" ]]; then _err "'$1' no dir"; return 1; fi
+  if [[ :$MANPATH: =~ :$1: ]]; then _err "'$1' already on path"; return 1; fi
+  export MANPATH="$1:$MANPATH";
+}
+
+# setup
+# ~/.local/bin  # first requested by pip --user
+_path_prepend "$BUN_INSTALL/bin" # from .env
+_path_prepend ~/bin
+_path_prepend ~/.local/bin
+_path_append ~/.cargo/bin
+_path_append ~/go/bin
+
+_manpath_prepend ~/hosting/Live/share/man
+_path_append ~/hosting/Live/bin
+
+#export PATH="$FLYCTL_INSTALL/bin:$PATH"
+_path_append ~/.fly/bin
+
+alias path-dedup='export PATH="$(ppath | nseen | tr-n: | sed -e "s_:\$__")"'
+# 2023-09-11t13:33:11
+# .bun/bin/ .byobu/bin/ .cargo/bin/ .local/bin/ .rye/self/bin/ Documents/Fritzing/bins/ go/bin/ hosting/Live/bin/ hosting/utils/bin/ hosting/utils/sbin/

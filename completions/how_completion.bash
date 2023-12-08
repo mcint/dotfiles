@@ -1,0 +1,1 @@
+/home/xenon/hosting/Ocf/puppet/modules/ocf/files/shell/how_completion.bash

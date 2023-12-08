@@ -1,0 +1,26 @@
+
+export EDITOR=nvim
+export PAGER='less -iRS' # not 1-page only. TODO how to pass flag/cmd for 1-page exit
+
+## z-lua
+# toooo much - https://github.com/skywind3000/z.lua#options
+export _ZL_MAXAGE=50000  # but excluding add-once (for now) i like heavy usage to prioritize... a bit
+#_ZL_DATA=~/.cache/zlua # _ZL_DATA=~/.zlua # TODO ln -s ~/.cache.../zlua ~/.zlua
+export _ZL_MATCH_MODE=1 # https://github.com/skywind3000/z.lua#enhanced-matching
+
+# bash - TODO separate .env.bash file? sourced from .env??
+export HISTCONTROL=ignoreboth
+export HISTSIZE=1000000
+export HISTFILESIZE=2000000
+
+export TERM=tmux-256color
+export FZF_DEFAULT_OPTS="--cycle --info=inline:':: '"
+export PYP_CONFIG_PATH=~/.config/pyp.py
+
+export BUN_INSTALL="$HOME/.bun"
+if [[ ! -v _mcnow ]]; then
+  declare -xA _mcnow=([up]="uptime" [load]="cat /proc/loadavg" [cal]="ncal -bw" [lsb]="lsb_release -a" )
+fi
+
+export FLYCTL_INSTALL="/home/xenon/.fly"
+#export PATH="$FLYCTL_INSTALL/bin:$PATH"

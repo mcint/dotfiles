@@ -32,6 +32,7 @@
 	lg = log --oneline
 	x = commit
 	cia = commit --amend
+	aa = add --all
 [user]
 	name = Loren McIntyre
 	email = hack@mcint.io

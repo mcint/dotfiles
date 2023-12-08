@@ -1,0 +1,1 @@
+/home/xenon/hosting/tmux-bash-completion/completions/tmux
